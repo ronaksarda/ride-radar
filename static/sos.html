@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#a3161c">
+  <title>Ride Radar SOS</title>
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Ride Radar <small>SOS</small></a>
+    <button class="lang" id="edit-setup" type="button">Contacts &amp; PIN</button>
+  </header>
+
+  <!-- 1. one-time setup -->
+  <section id="setup" class="wrap sos-pane" hidden>
+    <h1 class="page-title">Set up SOS</h1>
+    <p class="notice">Do this once, before you need it. Everything here stays on this phone. PINs are stored only as a salted hash.</p>
+    <form id="setup-form" class="fallback">
+      <fieldset class="choices" id="contacts">
+        <legend>Emergency contacts (WhatsApp numbers, with +91)</legend>
+      </fieldset>
+      <button class="linkish" type="button" id="add-contact">Add another contact</button>
+      <label>Cancel PIN (4 to 6 digits). Entering it stops a false alarm.
+        <input id="pin" type="password" inputmode="numeric" pattern="[0-9]{4,6}" autocomplete="new-password" required>
+      </label>
+      <label>Duress PIN (different). It looks like a cancel, but sends the alert silently.
+        <input id="duress" type="password" inputmode="numeric" pattern="[0-9]{4,6}" autocomplete="new-password" required>
+      </label>
+      <button class="btn secondary" type="button" id="test-camera">Allow camera and microphone now</button>
+      <p class="notice" id="camera-status"></p>
+      <button class="btn" type="submit">Save</button>
+      <p class="error" id="setup-error" role="alert" hidden></p>
+    </form>
+  </section>
+
+  <!-- 2. hold to record -->
+  <section id="ready" class="wrap sos-pane home" hidden>
+    <button class="sos-btn" id="hold" type="button" aria-describedby="hold-hint">Hold to record</button>
+    <p class="hint" id="hold-hint">Press and hold. Video and location go to the server while you hold.
+      Let go to lock it: the alert sends in 10 seconds unless you enter your PIN.</p>
+    <p class="error" id="ready-error" role="alert" hidden></p>
+    <a class="btn secondary" href="tel:112">Call 112 now</a>
+  </section>
+
+  <!-- 3. locked: countdown + keypad -->
+  <section id="locked" class="wrap sos-pane" hidden>
+    <h1 class="level-word sos-count" id="count" role="timer">10</h1>
+    <p class="level-label">Recording locked. Sending alert…</p>
+    <p class="notice" id="pin-msg">Enter your PIN to cancel a false alarm.</p>
+    <div class="pin-dots" id="pin-dots" aria-live="polite"></div>
+    <div class="keypad" id="keypad"></div>
+    <button class="btn share-btn" type="button" id="send-now">Send now</button>
+  </section>
+
+  <!-- 4. outcome -->
+  <section id="done" class="wrap sos-pane" hidden>
+    <h1 class="page-title" id="done-title" tabindex="-1"></h1>
+    <p class="notice" id="done-msg"></p>
+    <div id="sent-actions" hidden>
+      <a class="btn share-btn" href="tel:112">Call 112</a>
+      <div class="helplines">
+        <h2 id="wa-title">Tell your contacts on WhatsApp</h2>
+        <div class="helpline-list" id="wa-links"></div>
+      </div>
+      <p class="notice">Your live location keeps updating on the alert page while this screen stays open.</p>
+    </div>
+    <button class="btn secondary" type="button" id="done-back">Back</button>
+  </section>
+
+  <nav class="sitenav" aria-label="Pages">
+    <a href="/">Check</a>
+    <a href="/sos" aria-current="page">SOS</a>
+    <a href="/route">Route</a>
+    <a href="/heatmap">Heatmap</a>
+    <a href="/dashboard">Authority dashboard</a>
+    <a href="/privacy">Privacy</a>
+  </nav>
+  <script src="/static/sos.js"></script>
+</body>
+</html>

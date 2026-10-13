@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1d1f22">
+  <meta name="description" content="One tap to see reported ride incidents near you, by area and time of day.">
+  <title>Ride Radar</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Ride Radar <small id="city-name">Hyderabad</small></a>
+    <button class="lang" id="lang-toggle" type="button" aria-label="Switch language">हिंदी</button>
+  </header>
+
+  <main id="home" class="wrap home">
+    <button class="check-btn" id="check-btn" type="button" data-i18n="check">Check this ride</button>
+    <p class="hint" data-i18n="hint">Uses your location and the current time. Nothing is stored.</p>
+    <p class="error" id="home-error" role="alert" hidden></p>
+    <a class="btn secondary route-cta" href="/route" data-i18n="routeCta">Going somewhere? Check the whole route</a>
+    <div class="home-links">
+      <button class="linkish" id="pick-area" type="button" data-i18n="pickArea">Choose an area instead</button>
+      <button class="linkish" id="open-report" type="button" data-i18n="reportOpen">Report something that happened</button>
+    </div>
+
+    <form class="fallback" id="fallback" hidden>
+      <p class="notice" id="fallback-reason" data-i18n="gpsOff">Location is off or unavailable. Pick the area you are in.</p>
+      <label><span data-i18n="area">Area</span>
+        <select id="area-select" required></select>
+      </label>
+      <label><span data-i18n="time">Time</span>
+        <select id="hour-select"></select>
+      </label>
+      <button class="btn" type="submit" data-i18n="checkArea">Check this area</button>
+    </form>
+  </main>
+
+  <section id="result" class="result" hidden aria-live="polite">
+    <div class="wrap">
+      <p id="offline-note" class="notice" hidden></p>
+      <p id="sample-badge" hidden><span class="sample-badge">SAMPLE DATA</span></p>
+      <h1 class="level-word" id="level-word" tabindex="-1"></h1>
+      <p class="level-label" id="level-label"></p>
+      <p class="reason" id="reason"></p>
+      <p class="meta" id="meta"></p>
+      <p class="advice" id="advice" hidden></p>
+      <ul class="options" id="options" hidden></ul>
+
+      <div class="day" id="day" hidden>
+        <h2 id="day-title" data-i18n="dayTitle">Same spot, every hour</h2>
+        <div class="day-strip" id="day-strip" role="group" aria-labelledby="day-title"></div>
+        <div class="day-axis" aria-hidden="true"><span>00</span><span>06</span><span>12</span><span>18</span><span>23</span></div>
+      </div>
+
+      <div class="actions">
+        <button class="btn share-btn" id="share-btn" type="button" hidden data-i18n="share">Share my trip</button>
+        <div class="share-box" id="share-box" hidden>
+          <p class="notice" id="share-status" role="status"></p>
+          <input id="share-url" readonly aria-label="Trip link">
+          <button class="btn" id="share-send" type="button" data-i18n="sendLink">Send link</button>
+          <button class="btn secondary" id="share-stop" type="button" data-i18n="stopShare">Stop sharing</button>
+        </div>
+        <div class="helplines" id="helplines" hidden>
+          <h2 data-i18n="helpTitle">Need help now?</h2>
+          <div class="helpline-list" id="helpline-list"></div>
+        </div>
+        <button class="btn secondary" id="again-btn" type="button" data-i18n="again">Check again</button>
+      </div>
+
+      <ul class="sources" id="sources"></ul>
+      <p class="footnote" data-i18n="footnote">Based on reported incidents only. No reports does not guarantee safety.</p>
+    </div>
+  </section>
+
+  <section id="report" class="wrap report" hidden>
+    <h1 class="page-title" data-i18n="reportTitle" tabindex="-1" id="report-title">Report something that happened</h1>
+    <p class="notice" data-i18n="reportIntro">Anonymous. We keep only the area (about 100 m), the hour and the type. No names, no text, no phone number.</p>
+    <form id="report-form" class="fallback">
+      <fieldset class="choices">
+        <legend data-i18n="reportWhat">What happened?</legend>
+        <label><input type="radio" name="category" value="harassment" required> <span data-i18n="cat_harassment">Harassment or lewd remarks</span></label>
+        <label><input type="radio" name="category" value="stalking"> <span data-i18n="cat_stalking">I was followed</span></label>
+        <label><input type="radio" name="category" value="fare_dispute_threat"> <span data-i18n="cat_fare_dispute_threat">Threatened over the fare</span></label>
+        <label><input type="radio" name="category" value="assault"> <span data-i18n="cat_assault">Physical assault</span></label>
+        <label><input type="radio" name="category" value="other"> <span data-i18n="cat_other">Something else felt unsafe</span></label>
+      </fieldset>
+      <label><span data-i18n="reportWhere">Where?</span>
+        <select id="report-where" required></select>
+      </label>
+      <label><span data-i18n="time">Time</span>
+        <select id="report-hour"></select>
+      </label>
+      <button class="btn" type="submit" data-i18n="reportSend">Send report</button>
+      <button class="btn secondary" type="button" id="report-cancel" data-i18n="cancel">Cancel</button>
+      <p class="notice" id="report-status" role="status"></p>
+    </form>
+  </section>
+
+  <nav class="sitenav" aria-label="Pages">
+    <a href="/" aria-current="page">Check</a>
+    <a href="/sos">SOS</a>
+    <a href="/route">Route</a>
+    <a href="/heatmap">Heatmap</a>
+    <a href="/dashboard">Authority dashboard</a>
+    <a href="/sim-sms">SMS demo</a>
+    <a href="/privacy">Privacy</a>
+  </nav>
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+ride_radar.db
+.pytest_cache/
+.venv/
+.env
+*.db-wal
+*.db-shm
+media/
+.claude/
+demo/
+scripts/

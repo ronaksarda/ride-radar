@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ride Radar Authority Dashboard</title>
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="gov-head">
+    <header class="topbar">
+      <a class="brand" href="/dashboard">Ride Safety Review <small id="city-name">Hyderabad</small></a>
+      <span id="today" class="gov-date"></span>
+    </header>
+  </div>
+  <main class="wrap wide dash-main">
+    <h1 class="page-title">Areas that need attention</h1>
+    <p class="notice">Ranked by weighted incident count: recent reports count more, and news counts more than unverified rider reports.
+      "Weeks unresolved" counts from the first incident in the last 12 months, and restarts after an area is marked addressed.</p>
+    <p id="sample-badge" hidden><span class="sample-badge">SAMPLE DATA</span> Rows marked sample include placeholder incidents, not real reports.</p>
+    <form id="token-form" class="token-form" hidden>
+      <label for="token">Officer access token</label>
+      <input id="token" type="password" autocomplete="current-password" required>
+      <button class="btn" type="submit">Unlock actions</button>
+    </form>
+    <p class="error" id="error" role="alert" hidden></p>
+    <div class="dash-grid">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="num">#</th>
+            <th>Area</th>
+            <th class="num">Weeks unresolved</th>
+            <th class="num">Incidents</th>
+            <th class="num">Weighted</th>
+            <th>Last incident</th>
+            <th>Review</th>
+          </tr>
+        </thead>
+        <tbody id="rows"><tr><td colspan="7">Loading areas…</td></tr></tbody>
+      </table>
+    </div>
+
+    <aside class="area-panel" id="panel" aria-live="polite" tabindex="-1">
+      <p class="notice" id="panel-empty">Pick an area to review what was reported, when, and how to get there.</p>
+      <div id="panel-body" hidden>
+        <h2 class="panel-title" id="p-name"></h2>
+        <p class="panel-status" id="p-status"></p>
+        <div class="panel-links">
+          <a class="btn secondary" id="p-gmaps" target="_blank" rel="noopener noreferrer">Directions in Google Maps</a>
+          <a class="linkish" id="p-osm" target="_blank" rel="noopener noreferrer">Open in OpenStreetMap</a>
+        </div>
+        <div id="p-map" class="panel-map" role="region" aria-label="Incidents in this area"></div>
+
+        <h3>When it happens</h3>
+        <div class="hour-bars" id="p-hours" aria-hidden="true"></div>
+        <div class="day-axis" aria-hidden="true"><span>00</span><span>06</span><span>12</span><span>18</span><span>23</span></div>
+        <p id="p-peak"></p>
+
+        <h3>What was reported</h3>
+        <ul class="cat-list" id="p-cats"></ul>
+        <p class="notice" id="p-trend"></p>
+        <p class="notice" id="p-mix"></p>
+
+        <form class="resolve-form" id="p-resolve" hidden>
+          <h3>Mark addressed</h3>
+          <label for="p-action">What was done</label>
+          <select id="p-action" required></select>
+          <label for="p-note">Note for the record (optional)</label>
+          <textarea id="p-note" maxlength="280" rows="3" placeholder="Where, when, which unit"></textarea>
+          <button class="btn" type="submit">Mark addressed</button>
+        </form>
+
+        <h3 id="p-inc-title">Reported incidents</h3>
+        <ul class="sources" id="p-incidents"></ul>
+      </div>
+    </aside>
+    </div>
+    <p class="notice">This dashboard shows reported patterns only. It does not name people or vehicles.</p>
+  </main>
+  <nav class="sitenav" aria-label="Pages">
+    <a href="/">Check</a>
+    <a href="/route">Route</a>
+    <a href="/heatmap">Heatmap</a>
+    <a href="/dashboard" aria-current="page">Authority dashboard</a>
+    <a href="/sim-sms">SMS demo</a>
+    <a href="/privacy">Privacy</a>
+  </nav>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="/static/dashboard.js?v=4"></script>
+</body>
+</html>

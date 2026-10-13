@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ride Radar Privacy</title>
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Ride Radar <small>Privacy</small></a>
+  </header>
+  <main class="wrap prose">
+    <h1 class="page-title">What Ride Radar keeps, and what it never keeps</h1>
+
+    <h2>Checking a ride</h2>
+    <p>Your location and the hour go to the server, which scores them and forgets them. Nothing about the check is saved: not your location, not the result, and not in the server logs. Your browser keeps the last result so the app still opens offline.</p>
+    <h2>Checking a route</h2>
+    <p>Your pickup, drop and leaving hour go to the server, which scores the route and forgets them. To find the road route, the server sends only the two points to an OSRM routing server (by default the public demo server at router.project-osrm.org). When you type an address, the text goes to an address search server (by default the public Photon server at photon.komoot.io) to find matching places. Nothing about the route or the search is saved or logged.</p>
+
+
+    <h2>Sharing a trip</h2>
+    <p>While you share, the server keeps only your <strong>latest</strong> position, never a route. The link stops working when you tap "Stop sharing", and is deleted 3 hours after you created it. Only your phone holds the key that can update or stop the link.</p>
+
+    <h2>Reporting something that happened</h2>
+    <p>A report holds only the type of incident, the hour, the date and the area, rounded to about 100 metres. There is no free text, so a report cannot name anyone. We do not store who sent it. Reports appear as "Rider report, not verified".</p>
+
+    <h2>SMS</h2>
+    <p>The SMS service reads the area and time in your message and replies once. It does not send you anything else. Text STOP to say so, or HELP for instructions.</p>
+
+    <h2>News incidents</h2>
+    <p>Incidents come from public news reports. We show only the area, time, type and a one-line summary in our own words, with a link to the source. We never show names or vehicle numbers.</p>
+
+    <h2>Limits</h2>
+    <p>Ride Radar shows reported incidents only. No reports does not mean an area is safe. In an emergency, call <a href="tel:112">112</a>.</p>
+  </main>
+  <nav class="sitenav" aria-label="Pages">
+    <a href="/">Check</a>
+    <a href="/route">Route</a>
+    <a href="/heatmap">Heatmap</a>
+    <a href="/dashboard">Authority dashboard</a>
+    <a href="/sim-sms">SMS demo</a>
+    <a href="/privacy" aria-current="page">Privacy</a>
+  </nav>
+</body>
+</html>

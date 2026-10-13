@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ride Radar Heatmap</title>
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Ride Radar <small id="city-name">Hyderabad</small></a>
+  </header>
+  <main class="wrap wide">
+    <h1 class="page-title">Where and when incidents were reported</h1>
+    <p class="notice" id="summary" role="status">Loading reports…</p>
+    <p id="sample-badge" hidden><span class="sample-badge">SAMPLE DATA</span> Some points are sample entries, not real reports.</p>
+    <div class="controls">
+      <div class="row">
+        <label for="hour" class="hour-readout" id="hour-readout">All hours</label>
+        <input type="range" id="hour" min="0" max="23" step="1" value="21" disabled aria-label="Hour of day">
+      </div>
+      <div class="row">
+        <label><input type="checkbox" id="all-hours" checked> Show all hours</label>
+        <label><input type="checkbox" id="show-sample" checked> Include sample data</label>
+      </div>
+    </div>
+    <div id="map" class="map" role="region" aria-label="Incident heatmap"></div>
+    <p class="notice">Tap a dot for the area, category, and source. The hour filter shows incidents within ±2 hours.
+      Filled dot: news report. Hollow dot: rider report, not verified.</p>
+  </main>
+  <nav class="sitenav" aria-label="Pages">
+    <a href="/">Check</a>
+    <a href="/route">Route</a>
+    <a href="/heatmap" aria-current="page">Heatmap</a>
+    <a href="/dashboard">Authority dashboard</a>
+    <a href="/sim-sms">SMS demo</a>
+    <a href="/privacy">Privacy</a>
+  </nav>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js" integrity="sha256-65UqrlgGoRAnKfKRuriH3eeDrOhZgZo1SCenduc+SGo=" crossorigin=""></script>
+  <script src="/static/heatmap.js"></script>
+</body>
+</html>

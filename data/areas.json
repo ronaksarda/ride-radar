@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "name": "Secunderabad Railway Station",
+    "lat": 17.4337,
+    "lng": 78.5016
+  },
+  {
+    "id": 2,
+    "name": "Ameerpet",
+    "lat": 17.4375,
+    "lng": 78.4482
+  },
+  {
+    "id": 3,
+    "name": "HITEC City",
+    "lat": 17.4474,
+    "lng": 78.3762
+  },
+  {
+    "id": 4,
+    "name": "Gachibowli",
+    "lat": 17.4401,
+    "lng": 78.3489
+  },
+  {
+    "id": 5,
+    "name": "Kukatpally",
+    "lat": 17.4948,
+    "lng": 78.3996
+  },
+  {
+    "id": 6,
+    "name": "LB Nagar",
+    "lat": 17.3457,
+    "lng": 78.5522
+  },
+  {
+    "id": 7,
+    "name": "Dilsukhnagar",
+    "lat": 17.3688,
+    "lng": 78.5247
+  },
+  {
+    "id": 8,
+    "name": "Charminar",
+    "lat": 17.3616,
+    "lng": 78.4747
+  },
+  {
+    "id": 9,
+    "name": "Banjara Hills",
+    "lat": 17.4156,
+    "lng": 78.4347
+  },
+  {
+    "id": 10,
+    "name": "Jubilee Hills",
+    "lat": 17.4326,
+    "lng": 78.4071
+  },
+  {
+    "id": 11,
+    "name": "Mehdipatnam",
+    "lat": 17.3956,
+    "lng": 78.44
+  },
+  {
+    "id": 12,
+    "name": "Begumpet",
+    "lat": 17.4447,
+    "lng": 78.4664
+  },
+  {
+    "id": 13,
+    "name": "Uppal",
+    "lat": 17.4058,
+    "lng": 78.5591
+  },
+  {
+    "id": 14,
+    "name": "Kondapur",
+    "lat": 17.46,
+    "lng": 78.359
+  },
+  {
+    "id": 15,
+    "name": "MGBS Bus Station",
+    "lat": 17.3784,
+    "lng": 78.4836
+  },
+  {
+    "id": 16,
+    "name": "Shamshabad Airport",
+    "lat": 17.2403,
+    "lng": 78.4294
+  },
+  {
+    "id": 17,
+    "name": "Miyapur",
+    "lat": 17.4968,
+    "lng": 78.3614
+  },
+  {
+    "id": 18,
+    "name": "Alwal",
+    "lat": 17.502,
+    "lng": 78.504
+  },
+  {
+    "id": 19,
+    "name": "Neredmet",
+    "lat": 17.479,
+    "lng": 78.553
+  },
+  {
+    "id": 20,
+    "name": "Chandrayangutta",
+    "lat": 17.318,
+    "lng": 78.485
+  },
+  {
+    "id": 21,
+    "name": "Mailardevpally",
+    "lat": 17.329,
+    "lng": 78.441
+  },
+  {
+    "id": 22,
+    "name": "Rajendranagar",
+    "lat": 17.3209,
+    "lng": 78.4011
+  },
+  {
+    "id": 23,
+    "name": "Pahadi Shareef",
+    "lat": 17.283,
+    "lng": 78.48
+  },
+  {
+    "id": 24,
+    "name": "Hayathnagar",
+    "lat": 17.327,
+    "lng": 78.604
+  },
+  {
+    "id": 25,
+    "name": "Shamshabad Town",
+    "lat": 17.2647,
+    "lng": 78.3965
+  }
+]

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ride Radar SMS Demo</title>
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Ride Radar <small>SMS demo</small></a>
+  </header>
+  <main class="wrap">
+    <p class="notice">Simulated phone. It gets the same reply a real Twilio number would send.
+      A real rollout in India needs a registered sender and DLT telecom registration.</p>
+    <div class="phone">
+      <div class="phone-head">Ride Radar<small>SMS · no data connection needed</small></div>
+      <div class="thread" id="thread" aria-live="polite">
+        <div class="bubble in">Text RADAR and an area, with an optional time. Example: RADAR Gachibowli 9PM. Text HELP for help.</div>
+      </div>
+      <form class="composer" id="composer">
+        <input id="msg" autocomplete="off" maxlength="320" value="RADAR Secunderabad 10PM" aria-label="Message">
+        <button class="btn" type="submit">Send</button>
+      </form>
+    </div>
+  </main>
+  <nav class="sitenav" aria-label="Pages">
+    <a href="/">Check</a>
+    <a href="/route">Route</a>
+    <a href="/heatmap">Heatmap</a>
+    <a href="/dashboard">Authority dashboard</a>
+    <a href="/sim-sms" aria-current="page">SMS demo</a>
+    <a href="/privacy">Privacy</a>
+  </nav>
+  <script src="/static/sim-sms.js"></script>
+</body>
+</html>

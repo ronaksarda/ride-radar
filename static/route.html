@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1d1f22">
+  <title>Ride Radar Route</title>
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Ride Radar <small id="city-name">Hyderabad</small></a>
+  </header>
+  <main class="wrap wide route-page">
+    <h1 class="page-title">Check the whole ride</h1>
+    <form id="route-form" class="route-form">
+      <div class="place">
+        <label for="from">From</label>
+        <input id="from" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false"
+          aria-controls="from-list" autocomplete="off" spellcheck="false" placeholder="My location, or type an address" required>
+        <ul class="suggest" id="from-list" role="listbox" hidden></ul>
+      </div>
+      <div class="place">
+        <label for="to">To</label>
+        <input id="to" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false"
+          aria-controls="to-list" autocomplete="off" spellcheck="false" placeholder="Type an address or place" required>
+        <ul class="suggest" id="to-list" role="listbox" hidden></ul>
+      </div>
+      <label><span>Leaving at</span>
+        <select id="hour"></select>
+      </label>
+      <button class="btn" type="submit" id="go">Check this route</button>
+    </form>
+    <p class="notice" id="pin-hint" role="status">Type an address, pick an area, or tap the map to drop your destination.</p>
+    <p class="error" id="error" role="alert" hidden></p>
+
+    <div id="map" class="map route-map" role="region" aria-label="Route map"></div>
+
+    <section class="route-result" id="result" hidden aria-live="polite">
+      <p id="sample-badge" hidden><span class="sample-badge">SAMPLE DATA</span></p>
+      <h2 class="level-word" id="level-word" tabindex="-1"></h2>
+      <p class="reason" id="reason"></p>
+      <p class="meta" id="meta"></p>
+      <ol class="hotspots" id="hotspots"></ol>
+      <p class="advice" id="better" hidden></p>
+      <p class="notice" id="routing-note" hidden>Road route unavailable, so this checks a straight line between the two points. The real road may pass other areas.</p>
+      <a class="btn secondary" href="/">Share my trip from the Check screen</a>
+      <p class="footnote">Based on reported incidents only. No reports does not guarantee safety. Pickup and drop are not stored.</p>
+    </section>
+  </main>
+  <nav class="sitenav" aria-label="Pages">
+    <a href="/">Check</a>
+    <a href="/route" aria-current="page">Route</a>
+    <a href="/sos">SOS</a>
+    <a href="/heatmap">Heatmap</a>
+    <a href="/dashboard">Authority dashboard</a>
+    <a href="/sim-sms">SMS demo</a>
+    <a href="/privacy">Privacy</a>
+  </nav>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="/static/route.js?v=3"></script>
+</body>
+</html>

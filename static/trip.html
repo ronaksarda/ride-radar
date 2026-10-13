@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Ride Radar Live Trip</title>
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Ride Radar <small>Live trip</small></a>
+  </header>
+  <main class="wrap wide">
+    <h1 class="page-title" id="status" role="status">Waiting for the first location…</h1>
+    <p class="notice" id="detail">Someone shared their ride with you. This page refreshes every 10 seconds.</p>
+    <p class="stale" id="stale" role="alert" hidden>No update for over 2 minutes. Their phone may be off or out of signal. Try calling them. If you think they are in danger, call 112.</p>
+    <div id="map" class="map map-tall" role="region" aria-label="Latest shared location"></div>
+    <p class="notice">Only the latest point is kept. The link stops working when the rider stops sharing, or 3 hours after it was created.</p>
+    <p><a class="btn secondary" href="tel:112">Emergency · 112</a></p>
+  </main>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="/static/trip.js"></script>
+</body>
+</html>

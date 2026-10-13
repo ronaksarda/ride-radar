@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Ride Radar SOS Console</title>
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="gov-head"><header class="topbar"><a class="brand" href="/sos-console">SOS Console <small>Hyderabad</small></a></header></div>
+  <main class="wrap wide">
+    <h1 class="page-title">SOS alerts, last 7 days</h1>
+    <p class="notice">Refreshes every 10 seconds. Newest first. Contacts' phone numbers are never shown here.</p>
+    <form id="token-form" class="token-form" hidden>
+      <label for="token">Officer access token</label>
+      <input id="token" type="password" autocomplete="current-password" required>
+      <button class="btn" type="submit">Unlock</button>
+    </form>
+    <p class="error" id="error" role="alert" hidden></p>
+    <div id="alerts"><p class="notice">Loading…</p></div>
+  </main>
+  <nav class="sitenav" aria-label="Pages"><a href="/dashboard">Authority dashboard</a><a href="/sos-console" aria-current="page">SOS console</a></nav>
+  <script src="/static/sos-console.js"></script>
+</body>
+</html>
